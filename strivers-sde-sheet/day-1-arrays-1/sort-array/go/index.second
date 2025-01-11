@@ -1,0 +1,33 @@
+package main
+
+import "fmt"
+
+func sortColors(nums []int) {
+
+	length := len(nums)
+	for i := 0; i < length; i++ {
+		if nums[i] == 1 {
+			continue
+		}
+		firstArray := nums[:i]
+		secondArray := nums[i+1:]
+		if nums[i] == 0 {
+			nums = append([]int{0}, append(firstArray, secondArray...)...)
+			continue
+		}
+		if nums[i] == 2 {
+			nums = append(append(firstArray, secondArray...), 2)
+			continue
+		}
+
+	}
+
+	fmt.Println(nums)
+}
+
+func main() {
+	nums := []int{2, 0, 2, 1, 1, 0}
+	sortColors(nums)
+	// nums = []int{2, 0, 1}
+	// sortColors(nums)
+}
